@@ -8,11 +8,6 @@
 ## Problems Identified
 
 _Describe the issues you found in the original implementation. Consider aspects like:_
-- Architecture and design patterns
-- Code quality and maintainability
-- Security vulnerabilities
-- Performance concerns
-- Testing gaps
 
 - SQL injection vulnerability in data access methods because SQL statements were built with string interpolation.
 - Data access code was tightly coupled to raw SQL strings, making behavior brittle when user input contains special characters.
@@ -26,10 +21,6 @@ _Describe the issues you found in the original implementation. Consider aspects 
 ## Architectural Decisions
 
 _Explain the architecture you chose and why. Consider:_
-- Design patterns applied
-- Project structure changes
-- Technology choices
-- Separation of concerns
 
 - Keep the existing SQLite + ADO.NET approach for this iteration, but harden the implementation using parameterized SQL in all CRUD operations.
 - Apply minimal, high-impact refactoring first to reduce security risk without introducing broad persistence changes.
@@ -43,9 +34,6 @@ _Explain the architecture you chose and why. Consider:_
 ## Trade-offs
 
 _Discuss compromises you made and the reasoning behind them. Consider:_
-- What did you prioritize?
-- What did you defer or simplify?
-- What alternatives did you consider?
 
 - Prioritized immediate security and correctness improvements over ORM migration.
 - Deferred EF Core adoption to a follow-up iteration to avoid migration and behavior-change risk within the two-day window.
@@ -124,10 +112,5 @@ Response: 204 No Content, or 404 Not Found
 ## Future Improvements
 
 _What would you do if you had more time? Consider:_
-- Additional features
-- Performance optimizations
-- Enhanced testing
-- Better documentation
-- Deployment considerations
 
 - Replace the current ADO.NET data access with EF Core and migrations once the refactored API behavior is stable, to improve maintainability, schema evolution, and developer productivity.
